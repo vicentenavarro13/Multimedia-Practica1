@@ -51,7 +51,7 @@ var game = {
 	
 		//"Kindergarten" by Gurdonark
 		//http://ccmixter.org/files/gurdonark/26491 is licensed under a Creative Commons license
-		game.backgroundMusic = loader.loadSound('audio/gurdonark-kindergarten');
+		game.backgroundMusic = loader.loadSound('audio/temon');
 
 		game.slingshotReleasedSound = loader.loadSound("audio/released");
 		game.bounceSound = loader.loadSound('audio/bounce');
@@ -74,6 +74,11 @@ var game = {
 		game.backgroundMusic.play();
 		toggleImage.src="images/icons/sound.png";	
 	},
+	showMainMenu:function(){
+		$('.gamelayer').hide();
+		$('#gamestartscreen').show();
+	},
+
 	stopBackgroundMusic:function(){
 		var toggleImage = $("#togglemusic")[0];	
 		toggleImage.src="images/icons/nosound.png";	
@@ -396,7 +401,7 @@ var levels = {
 	// Datos de nivel
 	data:[
 	 {   // Primer nivel 
-		foreground:'desert-foreground',
+		foreground:'fondo',
 		background:'clouds-background',
 		entities:[
 			{type:"ground", name:"dirt", x:500,y:440,width:1000,height:20,isStatic:true},
@@ -404,18 +409,18 @@ var levels = {
 
 			{type:"block", name:"wood", x:520,y:380,angle:90,width:100,height:25},
 			{type:"block", name:"glass", x:520,y:280,angle:90,width:100,height:25},								
-			{type:"villain", name:"burger",x:520,y:205,calories:590},
+			{type:"villain", name:"lalo",x:520,y:205,calories:590},
 
 			{type:"block", name:"wood", x:620,y:380,angle:90,width:100,height:25},
 			{type:"block", name:"glass", x:620,y:280,angle:90,width:100,height:25},								
-			{type:"villain", name:"fries", x:620,y:205,calories:420},				
+			{type:"villain", name:"tuco", x:620,y:205,calories:420},				
 
-			{type:"hero", name:"orange",x:80,y:405},
-			{type:"hero", name:"apple",x:140,y:405},
+			{type:"hero", name:"mike",x:80,y:405},
+			{type:"hero", name:"saul",x:140,y:405},
 		]
 	 },
 		{   // Segundo nivel
-			foreground:'desert-foreground',
+			foreground:'fondo',
 			background:'clouds-background',
 			entities:[
 				{type:"ground", name:"dirt", x:500,y:440,width:1000,height:20,isStatic:true},
@@ -431,29 +436,126 @@ var levels = {
 				{type:"block", name:"glass", x:770,y:255,angle:90,width:100,height:25},
 				{type:"block", name:"wood", x:720,y:192.5,width:100,height:25},	
 
-				{type:"villain", name:"burger",x:715,y:155,calories:590},
-				{type:"villain", name:"fries",x:670,y:405,calories:420},
-				{type:"villain", name:"sodacan",x:765,y:400,calories:150},
+				{type:"villain", name:"lalo",x:715,y:155,calories:590},
+				{type:"villain", name:"tuco",x:670,y:405,calories:420},
+				{type:"villain", name:"hector",x:765,y:400,calories:150},
 
-				{type:"hero", name:"strawberry",x:30,y:415},
-				{type:"hero", name:"orange",x:80,y:405},
-				{type:"hero", name:"apple",x:140,y:405},
+				{type:"hero", name:"gus",x:30,y:415},
+				{type:"hero", name:"mike",x:80,y:405},
+				{type:"hero", name:"saul",x:140,y:405},
 			]
-		}
+		}, 
+		{  // Tercer nivel
+			foreground:'fondo',
+			background:'clouds-background',
+			entities:[
+				{type:"ground", name:"dirt", x:500,y:440,width:1000,height:20,isStatic:true},
+				{type:"ground", name:"wood", x:185,y:390,width:30,height:80,isStatic:true},
+		
+				
+				{type:"block", name:"wood", x:500,y:380,width:200,height:25},
+				
+				
+				{type:"block", name:"wood", x:450,y:330,angle:90,width:100,height:25},
+				{type:"block", name:"glass", x:550,y:330,angle:90,width:100,height:25},
+				{type:"block", name:"wood", x:500,y:280,width:150,height:25},
+				{type:"villain", name:"lalo",x:500,y:235,calories:590},
+				
+				{type:"block", name:"wood", x:700,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"glass", x:700,y:280,angle:90,width:100,height:25},
+				{type:"villain", name:"tuco",x:700,y:235,calories:420},
+		
+				{type:"hero", name:"gus",x:30,y:415},
+				{type:"hero", name:"mike",x:80,y:405},
+				{type:"hero", name:"saul",x:140,y:405},
+			]
+		},
+	
+		{   //Cuarto nivel
+			foreground:'fondo',
+			background:'clouds-background',
+			entities:[
+				{type:"ground", name:"dirt", x:500,y:440,width:1000,height:20,isStatic:true},
+		
+				
+				{type:"block", name:"wood", x:380,y:390,width:70,height:120,isStatic:true},
+				{type:"block", name:"wood", x:620,y:390,width:70,height:120,isStatic:true},
+				{type:"block", name:"wood", x:500,y:380,width:240,height:25,isStatic:true},
+		
+				
+				{type:"block", name:"wood", x:500,y:350,width:240,height:25,isStatic:true},
+		
+				{type:"block", name:"wood", x:500,y:320,width:100,height:25},
+				{type:"block", name:"glass", x:500,y:290,width:100,height:25},
+				{type:"block", name:"wood", x:500,y:260,width:100,height:25},
+				{type:"villain", name:"lalo",x:500,y:230,calories:590},
+		
+				
+				{type:"block", name:"wood", x:420,y:320,angle:0,width:25,height:60},
+				{type:"villain", name:"tuco",x:420,y:280,calories:420},
+				{type:"block", name:"wood", x:580,y:320,angle:0,width:25,height:60},
+				{type:"villain", name:"hector",x:580,y:280,calories:150},
+		
+				
+				{type:"hero", name:"gus",x:30,y:415},
+				{type:"hero", name:"mike",x:80,y:405},
+				{type:"hero", name:"saul",x:140,y:405},
+			]
+		},
+		{   //Quinto nivel
+			foreground:'fondo',
+			background:'clouds-background',
+			entities:[
+				{type:"ground", name:"dirt", x:500,y:440,width:1000,height:20,isStatic:true},
+		
+		
+				{type:"block", name:"wood", x:300,y:390,width:50,height:100,isStatic:true},
+				{type:"block", name:"wood", x:700,y:390,width:50,height:100,isStatic:true},
+				{type:"block", name:"wood", x:500,y:380,width:400,height:25,isStatic:true},
+		
+				
+				{type:"block", name:"wood", x:500,y:350,width:100,height:25},
+				{type:"block", name:"glass", x:500,y:320,width:100,height:25},
+				{type:"block", name:"wood", x:500,y:290,width:100,height:25},
+		
+		
+				{type:"block", name:"wood", x:500,y:270,width:120,height:25,isStatic:true},
+		
+		
+				{type:"block", name:"wood", x:470,y:245,width:20,height:50,isStatic:true},
+				{type:"block", name:"wood", x:530,y:245,width:20,height:50,isStatic:true},
+				{type:"block", name:"wood", x:500,y:220,width:60,height:20,isStatic:true},
+		
+				{type:"villain", name:"lalo",x:500,y:245,calories:590},
+		
+				
+				{type:"block", name:"wood", x:400,y:350,width:25,height:60},
+				{type:"block", name:"wood", x:600,y:350,width:25,height:60},
+		
+			
+				{type:"villain", name:"tuco",x:450,y:380,calories:420},
+				{type:"villain", name:"hector",x:550,y:380,calories:150},
+		
+		
+				{type:"hero", name:"gus",x:30,y:415},
+				{type:"hero", name:"mike",x:80,y:405},
+				{type:"hero", name:"saul",x:140,y:405},
+		
+			]
+		},
 	],
 
 	// Inicializar pantalla de selección de nivel
 	init:function(){
-		var html = "";
+		var html = '<button class="game-button" id="backbutton" onclick="game.showMainMenu();">Back</button>';
 		for (var i=0; i < levels.data.length; i++) {
-			var level = levels.data[i];
-			html += '<input type="button" value="'+(i+1)+'">';
+			html += '<button class="game-button level-button">'+(i+1)+'</button>';
 		};
 		$('#levelselectscreen').html(html);
 		
-		// Establecer los controladores de eventos de clic de botón para cargar el nivel
-		$('#levelselectscreen input').click(function(){
-			levels.load(this.value-1);
+		// Establecer los controladores de eventos de clic para los botones de nivel
+		$('#levelselectscreen .level-button').click(function(){
+			levels.load($(this).text()-1);
 			$('#levelselectscreen').hide();
 		});
 	},
@@ -511,7 +613,7 @@ var entities = {
 			friction:1.5,
 			restitution:0.2,	
 		},
-		"burger":{
+		"lalo":{
 			shape:"circle",
 			fullHealth:40,
 			radius:25,
@@ -519,7 +621,7 @@ var entities = {
 			friction:0.5,
 			restitution:0.4,	
 		},
-		"sodacan":{
+		"hector":{
 			shape:"rectangle",
 			fullHealth:80,
 			width:40,
@@ -528,7 +630,7 @@ var entities = {
 			friction:0.5,
 			restitution:0.7,	
 		},
-		"fries":{
+		"tuco":{
 			shape:"rectangle",
 			fullHealth:50,
 			width:40,
@@ -537,21 +639,21 @@ var entities = {
 			friction:0.5,
 			restitution:0.6,	
 		},
-		"apple":{
+		"saul":{
 			shape:"circle",
 			radius:25,
 			density:1.5,
 			friction:0.5,
 			restitution:0.4,	
 		},
-		"orange":{
+		"mike":{
 			shape:"circle",
 			radius:25,
 			density:1.5,
 			friction:0.5,
 			restitution:0.4,	
 		},
-		"strawberry":{
+		"gus":{
 			shape:"circle",
 			radius:15,
 			density:2.0,
@@ -805,6 +907,8 @@ var loader = {
 		}
 	}
 }
+
+
 
 var mouse = {
 	x:0,
