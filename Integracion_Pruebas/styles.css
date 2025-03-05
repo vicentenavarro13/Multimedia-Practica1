@@ -132,7 +132,7 @@ pausedscreen {
 	padding-left:100px;
 }
 
-#pausedcreen p  {    
+#pausedscreen p  {    
     font: 20px Comic Sans MS;
     text-shadow: 0 0 2px #000;
 	color:white;
@@ -144,7 +144,7 @@ pausedscreen {
 	cursor:pointer;
 }
 
-#pausedcreen #pausedmessage  {    
+#pausedscreen #pausedmessage  {    
     font-family: 'Script Casual', cursive;
     text-shadow: 0 0 2px #000;
 	color:white;

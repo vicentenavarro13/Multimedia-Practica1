@@ -299,7 +299,7 @@ var game = {
 
 		showPauseScreen:function(){
 			game.stopBackgroundMusic();				
-			$('#pausedmessage').html('Paused, ¿Do you want to continue playing?');
+			$('#pausedmessage').html('Paused. Do you want to continue playing?');
 			$('#pausedscreen').show();
 		},
 
