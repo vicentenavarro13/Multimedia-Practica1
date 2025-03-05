@@ -53,11 +53,11 @@ var game = {
 		//http://ccmixter.org/files/gurdonark/26491 is licensed under a Creative Commons license
 		game.backgroundMusic = loader.loadSound('audio/temon');
 
-		game.slingshotReleasedSound = loader.loadSound("audio/released");
-		game.bounceSound = loader.loadSound('audio/bounce');
+		game.slingshotReleasedSound = loader.loadSound("audio/throw");
+		game.bounceSound = loader.loadSound('audio/boing');
 		game.breakSound = {
-			"glass":loader.loadSound('audio/glassbreak'),
-			"wood":loader.loadSound('audio/woodbreak')
+			"glass":loader.loadSound('audio/glass'),
+			"wood":loader.loadSound('audio/madera')
 		};
 
 
@@ -295,6 +295,18 @@ var game = {
 			}		
 	
 			$('#endingscreen').show();
+		},
+
+		showPauseScreen:function(){
+			game.stopBackgroundMusic();				
+			$('#pausedmessage').html('Paused, ¿Do you want to continue playing?');
+			$('#pausedscreen').show();
+		},
+
+		continueGame:function(){
+			game.toggleBackgroundMusic();
+			$('#pausedscreen').hide();
+
 		},
 	
 	animate:function(){

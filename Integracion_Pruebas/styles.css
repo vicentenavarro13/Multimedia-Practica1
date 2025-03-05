@@ -118,6 +118,38 @@ endingscreen {
 	color:white;
 }
 
+/* Pantalla de pausa */
+pausedscreen {
+	text-align:center;	
+}
+
+#pausedscreen div {
+	height:430px;
+	padding-top:50px;
+	border:1px;
+	background:rgba(1,1,1,0.5);
+	text-align:left;
+	padding-left:100px;
+}
+
+#pausedcreen p  {    
+    font: 20px Comic Sans MS;
+    text-shadow: 0 0 2px #000;
+	color:white;
+}
+
+#pausedscreen p img{
+	top:10px;
+	position:relative;
+	cursor:pointer;
+}
+
+#pausedcreen #pausedmessage  {    
+    font-family: 'Script Casual', cursive;
+    text-shadow: 0 0 2px #000;
+	color:white;
+}
+
 #levelselectscreen #backbutton {
     position: absolute;
     top: 10px;
