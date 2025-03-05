@@ -8,6 +8,7 @@ var b2World = Box2D.Dynamics.b2World;
 var b2PolygonShape = Box2D.Collision.Shapes.b2PolygonShape;
 var b2CircleShape = Box2D.Collision.Shapes.b2CircleShape;
 var b2DebugDraw = Box2D.Dynamics.b2DebugDraw;
+var languageChanged = false;
 
 // Solicitud de requestAnimationFrame y cancelAnimationFrame para su uso en el código del juego
 (function() {
@@ -283,14 +284,26 @@ var game = {
 			game.stopBackgroundMusic();				
 			if (game.mode=="level-success"){			
 				if(game.currentLevel.number<levels.data.length-1){
-					$('#endingmessage').html('Level Complete. Well Done!!!');
+					if(languageChanged = false){
+						$('#endingmessage').html('Level Complete. Well Done!!!');
+					} else {
+						$('#endingmessage').html('Nivel completado, ¡bien hecho!');
+					}
 					$("#playnextlevel").show();
 				} else {
-					$('#endingmessage').html('All Levels Complete. Well Done!!!');
+					if(languageChanged = false){
+						$('#endingmessage').html('All Levels Complete. Well Done!!!');
+					} else {
+						$('#endingmessage').html('Todos los niveles completados, ¡bien hecho!');
+					}
 					$("#playnextlevel").hide();
 				}
-			} else if (game.mode=="level-failure"){			
-				$('#endingmessage').html('Failed. Play Again?');
+			} else if (game.mode=="level-failure"){
+				if(languageChanged = false){
+					$('#endingmessage').html('Failed. Play Again?');
+				} else {
+					$('#endingmessage').html('Nivel perdido, ¿quieres volver a intentarlo?');
+				}			
 				$("#playnextlevel").hide();
 			}		
 	
@@ -298,8 +311,12 @@ var game = {
 		},
 
 		showPauseScreen:function(){
-			game.stopBackgroundMusic();				
-			$('#pausedmessage').html('Paused. Do you want to continue playing?');
+			game.stopBackgroundMusic();
+			if(languageChanged = false){
+				$('#pausedmessage').html('Paused. Do you want to continue playing?');
+			} else {
+				$('#pausedmessage').html('En pausa. ¿quieres continuar	?');
+			}
 			$('#pausedscreen').show();
 		},
 
@@ -307,6 +324,58 @@ var game = {
 			game.toggleBackgroundMusic();
 			$('#pausedscreen').hide();
 
+		},
+
+		change_language:function(){
+
+			if(languageChanged == false){
+				// Pantalla principal (menú de inicio)
+				$('#play_button').html("Jugar");
+				$('#settings_button').html("Cambiar idioma");
+
+				// Pantalla de puntuación
+				$('#togglemusic').html("Sonido");
+				$('#restart_level').html("Reiniciar");
+				$('#pause_button').html("Pausa");
+				$('#score').html("Puntuación");
+
+
+				// Pantalla de finalización del nivel
+				$('#replay_button').html("Repetir Nivel Actual");
+				$('#next_level_ending').html("Siguiente Nivel");
+				$('#return_button_ending').html("Volver al Menú");
+
+				// Pantalla en pausa
+				$('#replay_button_paused').html("Repetir Nivel Actual");
+				$('#continue_button_paused').html("Continuar");
+				$('#exit_button_paused').html("Salir");
+				languageChanged = true
+			} else {
+				$('#play_button').html("Play");
+				$('#settings_button').html("Change language");
+
+				// Score Screen
+				$('#togglemusic').html("Sound");
+				$('#restart_level').html("Restart");
+				$('#pause_button').html("Pause");
+				$('#score').html("Score");
+
+
+				// End Level Screen
+				$('#replay_button').html("Replay Current Level");
+				$('#next_level_ending').html("Next Level");
+				$('#return_button_ending').html("Return to Menu");
+
+				// Paused Screen
+				$('#replay_button_paused').html("Replay Current Level");
+				$('#continue_button_paused').html("Continue");
+				$('#exit_button_paused').html("Exit");
+
+				languageChanged = false
+			}
+
+			
+			
 		},
 	
 	animate:function(){
@@ -361,7 +430,11 @@ var game = {
 					box2d.world.DestroyBody(body);
 					if (entity.type=="villain"){
 						game.score += entity.calories;
-						$('#score').html('Score: '+game.score);
+						if(languageChanged = false){
+							$('#score').html('Score: '+game.score);
+						} else {
+							$('#score').html('Puntuación: '+game.score);
+						}
 					}
 					if (entity.breakSound){
 						entity.breakSound.play();
@@ -559,7 +632,11 @@ var levels = {
 
 	// Inicializar pantalla de selección de nivel
 	init:function(){
-		var html = '<button class="game-button" id="backbutton" onclick="game.showMainMenu();">Back</button>';
+		if(languageChanged = false){
+			var html = '<button class="game-button" id="backbutton" onclick="game.showMainMenu();">Back</button>';
+		} else {
+			var html = '<button class="game-button" id="backbutton" onclick="game.showMainMenu();">Atrás</button>';
+		}
 		for (var i=0; i < levels.data.length; i++) {
 			html += '<button class="game-button level-button">'+(i+1)+'</button>';
 		};
@@ -580,7 +657,11 @@ var levels = {
 		// Declarar un nuevo objeto de nivel actual
 		game.currentLevel = {number:number,hero:[]};
 		game.score=0;
-		$('#score').html('Score: '+game.score);
+		if(languageChanged = false){
+			$('#score').html('Score: '+game.score);
+		} else {
+			$('#score').html('Puntuación: '+game.score);
+		}
 		game.currentHero = undefined;
 		var level = levels.data[number];
 

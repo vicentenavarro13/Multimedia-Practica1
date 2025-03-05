@@ -16,14 +16,14 @@
 			
 			<div id="scorescreen" class="gamelayer">
 				<button class="game-button" id="togglemusic" onclick="game.toggleBackgroundMusic();">Sound</button>
-				<button class="game-button" onclick="game.restartLevel();">Restart</button>
-				<button class="game-button" onclick="game.showPauseScreen();">Pause</button>
+				<button class="game-button" id="restart_level" onclick="game.restartLevel();">Restart</button>
+				<button class="game-button" id="pause_button" onclick="game.showPauseScreen();">Pause</button>
 				<span id="score">Score: 0</span>
 			</div>
 			
 			<div id="gamestartscreen" class="gamelayer">
-				<button class="game-button" onclick="game.showLevelScreen();">Play</button><br>
-				<button class="game-button">Settings</button>
+				<button class="game-button" id="play_button" onclick="game.showLevelScreen();">Play</button><br>
+				<button class="game-button" id="settings_button"  onclick="game.change_language();">Change language</button>
 			</div>
 			<div id="levelselectscreen" class="gamelayer">
 				<img id="backbutton" src="images/icons/prev.png" alt="Back" onclick="game.showMainMenu();">
@@ -36,18 +36,18 @@
 			<div id="endingscreen" class="gamelayer">
 				<div>
 					<p id="endingmessage" >The Level Is Over Message </p>
-					<button class="game-button" onclick="game.restartLevel();">Replay Current Level</button>
-					<button class="game-button" onclick="game.startNextLevel();">Next Level</button>
-					<button class="game-button" onclick="game.showLevelScreen();">Return to Menu</button>
+					<button class="game-button" id="replay_button" onclick="game.restartLevel();">Replay Current Level</button>
+					<button class="game-button" id="next_level_ending" onclick="game.startNextLevel();">Next Level</button>
+					<button class="game-button" id="return_button_ending" onclick="game.showLevelScreen();">Return to Menu</button>
 				</div>
 			</div>
 
 			<div id="pausedscreen" class="gamelayer">
 				<div>
 					<p id="pausedmessage" >Paused Message </p>
-					<button class="game-button" onclick="game.restartLevel();">Replay Current Level</button>
-					<button class="game-button" onclick="game.continueGame();">Continue</button>
-					<button class="game-button" onclick="game.showLevelScreen();">Exit</button>
+					<button class="game-button" id="replay_button_paused" onclick="game.restartLevel();">Replay Current Level</button>
+					<button class="game-button" id="continue_button_paused" onclick="game.continueGame();">Continue</button>
+					<button class="game-button" id="exit_button_paused" onclick="game.showLevelScreen();">Exit</button>
 				</div>
 			</div>
 			
